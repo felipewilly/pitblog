@@ -8,3 +8,6 @@
 Projeto 01
 Dia 00
 Dia 01 "Criando Front-End" 
+Dia 02 "Adicionado Toda parte ADM Django"
+Dia 03 "Criado Logo PitBlog"
+Dia 04 "Criado Logo reduzido"

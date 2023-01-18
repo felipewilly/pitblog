@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>{%block titulo%}{%endblock%} PitBlog</title>
+    <link rel="shortcut icon" href="templates/static/logo-abreviada.ico"type="image/x-icon">
+    <!--_head.html-->
+    {%include 'paciais/_head.html'%}
+    <!--/_head.html-->
+</head>
+
+<body>
+
+    {%include 'paciais/__nav.html'%}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            {%block conteudo%}{%endblock%}
+
+        </div>
+    </div>
+</div>
+
+<!--_footer.html-->
+{%include 'paciais/_footer.html'%}
+<!--/_footer.html-->
+
+</body>
+
+</html>

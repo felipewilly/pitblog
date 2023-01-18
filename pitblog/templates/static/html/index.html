@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block conteudo%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/principal.css'%}" media="screen" />
+<script src="{% static 'js/js.js'%}"></script>
+</head>
+<body>
+<!-- Conteúdo -->
+<div class="content">
+    <h1 class="text">Em desenvolvimento.</h1>
+</div>
+</body>
+</html>
+<script>
+    function typeWrite(elemento){
+        const textoArray = elemento.innerHTML.split('');
+        elemento.innerHTML = ' ';
+        textoArray.forEach(function(letra, i){   
+          
+        setTimeout(function(){
+            elemento.innerHTML += letra;
+        }, 85 * i)
+    
+      });
+}
+    const titulo = document.querySelector('.text');
+    typeWrite(titulo);
+</script>
+{%endblock%}

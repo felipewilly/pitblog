@@ -26,9 +26,7 @@ html {
 
 body{
   background-color: rgb(232, 233, 233);
-
 }
-
 
 @media (min-width: 576px) {
   .container {

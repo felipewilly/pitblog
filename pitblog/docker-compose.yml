@@ -10,7 +10,8 @@ services:
       - "8000:8000"
 
   pgdb:
-    image: postgres
+    image: postgres:13-alpine
+    restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data/
     environment:

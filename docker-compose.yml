@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  pitblog:
+    build:
+      context: .
+    volumes:
+      - ./pitblog:/pitblog
+      - ./data/web/static:/data/web/static/
+      - ./data/web/media:/data/web/media/
+    env_file:
+      - ./.env
+    depends_on:
+      - pgdb
+    ports:
+      - "8000:8000"
+
+  pgdb:
+    image: postgres:15.1-alpine
+    restart: always
+    volumes:
+      - ./var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env

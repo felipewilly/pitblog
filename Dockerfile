@@ -3,7 +3,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY ./pitblog /pitblog
 
-COPY ./scripts /scripts
+COPY commands.sh /commands.sh
 
 WORKDIR /pitblog
 EXPOSE 8000
@@ -19,10 +19,10 @@ RUN python -m venv /venv && \
   chown -R duser:duser /data/web/media && \
   chmod -R 755 /data/web/static && \
   chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts
+  chmod +x /commands.sh
 
 ENV PATH="/scripts:/venv/bin:$PATH"
 
 USER duser
 
-CMD ["commands.sh"]
+CMD ["/commands.sh"]

@@ -5,6 +5,7 @@ __pycache__/
 /data/
 .env
 pitblog/static
+pitblog/media/
 # C extensions
 *.so
 

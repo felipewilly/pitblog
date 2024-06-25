@@ -45,6 +45,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
+          cd /home/test_cd/pitblog
           git pull origin main
           docker compose down  # Para e remove os containers atuais
           docker compose -f docker-compose.prod.yml up -d --build  # Reconstrói e inicia os containers em background

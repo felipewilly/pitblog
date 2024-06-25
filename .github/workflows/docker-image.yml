@@ -1,0 +1,51 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Docker Login
+      uses: docker/login-action@v3.2.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.1.0
+      with:
+        context: .
+        push: true
+        tags: |
+          cawisis/web_prod-fc:latest
+          cawisis/web_prod-fc:${{ github.run_number }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: SSH and Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/test_cd/pitblog
+          git pull origin main
+          docker compose down  # Para e remove os containers atuais
+          docker compose -f docker-compose.prod.yml up -d --build  # Reconstrói e inicia os containers em background

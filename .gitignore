@@ -8,6 +8,7 @@ pitblog/static
 pitblog/media/
 # C extensions
 *.so
+cd-cd.yml
 
 # Distribution / packaging
 .Python

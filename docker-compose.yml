@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   pitblog:
-    build:
-      context: .
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./pitblog:/pitblog
       - ./data/web/static:/data/web/static/

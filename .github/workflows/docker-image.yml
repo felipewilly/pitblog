@@ -47,5 +47,5 @@ jobs:
         script: |
           cd /home/test_cd/pitblog
           git pull origin main
-          docker-compose down  # Para e remove os containers atuais
-          docker-compose -f docker-compose.prod.yml up -d --build  # Reconstrói e inicia os containers em background
+          docker compose down  # Para e remove os containers atuais
+          docker compose -f docker-compose.prod.yml up -d --build  # Reconstrói e inicia os containers em background
